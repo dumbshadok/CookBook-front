@@ -1,0 +1,12 @@
+<div class="container fade-in">
+  <h2 class="text-center mb-2">My Pantry</h2>
+
+  <div class="card">
+    <ul class="ingredient-list">
+      <li *ngFor="let ingredient of ingredients" class="ingredient-item">
+        <span>{{ ingredient.name }}</span>
+        <span *ngIf="ingredient.amount"> - {{ ingredient.amount }} {{ ingredient.unit.toLowerCase() }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
