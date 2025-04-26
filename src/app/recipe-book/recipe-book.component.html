@@ -1,0 +1,17 @@
+<div class="container fade-in">
+  <h2 class="text-center mb-2">My cookbook</h2>
+
+  <div class="card">
+    <ul class="ingredient-list">
+      <li *ngFor="let recipe of recipes" class="ingredient-item" (click)="folded = !folded">
+        <div>
+          <span>{{ recipe.name }}</span><br>
+          <span>{{ recipe.category }}</span>
+          <div *ngIf="folded">
+            <span>{{recipe.description}}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

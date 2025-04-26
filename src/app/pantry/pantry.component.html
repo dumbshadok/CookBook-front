@@ -5,7 +5,7 @@
     <ul class="ingredient-list">
       <li *ngFor="let ingredient of ingredients" class="ingredient-item">
         <span>{{ ingredient.name }}</span>
-        <span *ngIf="ingredient.amount"> - {{ ingredient.amount }} {{ ingredient.unit.toLowerCase() }}</span>
+        <span *ngIf="ingredient.category"> - {{ ingredient.category }} {{ ingredient.unit.toLowerCase() }}</span>
       </li>
     </ul>
   </div>

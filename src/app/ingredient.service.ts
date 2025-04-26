@@ -10,7 +10,7 @@ export class IngredientService {
   url = 'http://localhost:8080'
 
   async getAllIngredients(): Promise<Ingredient[]> {
-    const data = await fetch(`${this.url}/getAllIngredients`)
+    const data = await fetch(`${this.url}/ingredients`)
     return await data.json() as Ingredient[];
   }
 
