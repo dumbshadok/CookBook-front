@@ -7,7 +7,7 @@ import {Recipe} from './recipe';
 
 export class RecipeService {
 
-  url = 'http://localhost:8080'
+  url = 'http://spring-backend'
 
   async getAllRecipes(): Promise<Recipe[]> {
     const data = await fetch(`${this.url}/recipes`)
