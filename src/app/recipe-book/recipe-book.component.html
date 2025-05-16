@@ -1,17 +1,19 @@
 <div class="container fade-in">
   <h2 class="text-center mb-2">My cookbook</h2>
 
-  <div class="card">
-    <ul class="ingredient-list">
-      <li *ngFor="let recipe of recipes" class="ingredient-item" (click)="folded = !folded">
-        <div>
-          <span>{{ recipe.name }}</span><br>
-          <span>{{ recipe.category }}</span>
-          <div *ngIf="folded">
-            <span>{{recipe.description}}</span>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+    <section class="results">
+      <h2 *ngIf="recipes.length==0; else results">No recipes corresponding</h2>
+      <ng-template #results>
+        <app-recipe-card
+          *ngFor="let recipe of recipes"
+          [recipeInput]="recipe">
+        </app-recipe-card>
+      </ng-template>
+    </section>
+
+  <section>
+    add recipe
+    <button (click)="addRecipe(testRecipe)">+</button>
+  </section>
 </div>
+
