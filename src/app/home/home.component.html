@@ -1,1 +1,51 @@
-<h1>Home !</h1>
+<div class="home-container">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to CookBook</h1>
+      <p class="tagline">Your personal recipe manager and meal planning assistant</p>
+      <div class="cta-buttons">
+        <button class="btn primary" (click)="navigateToCookbook()">Browse Recipes</button>
+        <button class="btn secondary" (click)="navigateToPantry()">Check Pantry</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>What you can do</h2>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <div class="icon">📚</div>
+        <h3>Recipe Collection</h3>
+        <p>Store and organize all your favorite recipes in one place</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🥕</div>
+        <h3>Pantry Management</h3>
+        <p>Keep track of ingredients you have on hand</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🍽️</div>
+        <h3>Meal Planning</h3>
+        <p>Plan your meals for the week with ease</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick-start">
+    <h2>Get Started</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <p>Add ingredients to your pantry</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <p>Browse or add your favorite recipes</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <p>Create meal plans based on what you have</p>
+      </div>
+    </div>
+  </section>
+</div>
