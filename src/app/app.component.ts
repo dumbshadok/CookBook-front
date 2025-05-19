@@ -1,12 +1,14 @@
-import {Component} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { TopbarComponent } from './topbar/topbar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterModule],
+  standalone: true,
+  imports: [RouterOutlet, TopbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'CookBook-front';
+  title = 'CookBook';
 }

@@ -1,16 +1,7 @@
 <main>
+  <app-topbar></app-topbar>
 
-  <a [routerLink]="['/']">
-    <p>home</p>
-  </a>
-  <a [routerLink]="['/pantry']">
-    <p>pantry</p>
-
-  </a>
-  <a [routerLink]="['/cookbook']">
-    <p>cookbook</p>
-  </a>
-  <section id="section1">
+  <div class="content-container">
     <router-outlet></router-outlet>
-  </section>
+  </div>
 </main>

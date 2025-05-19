@@ -1,0 +1,29 @@
+<nav class="topbar">
+  <div class="topbar-container">
+    <div class="logo">
+      <a [routerLink]="['/']">
+        <span class="logo-icon">🍳</span>
+        <span class="logo-text">CookBook</span>
+      </a>
+    </div>
+
+    <div class="nav-links" [class.active]="isMenuOpen">
+      <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home</a>
+      <a [routerLink]="['/cookbook']" routerLinkActive="active" class="nav-link">Recipes</a>
+      <a [routerLink]="['/pantry']" routerLinkActive="active" class="nav-link">Pantry</a>
+      <a [routerLink]="['/meal-planner']" routerLinkActive="active" class="nav-link">Meal Planner</a>
+    </div>
+
+    <div class="right-section">
+      <button class="search-button">
+        <span class="search-icon">🔍</span>
+      </button>
+      <button class="user-button">
+        <span class="user-icon">👤</span>
+      </button>
+      <button class="menu-toggle" (click)="toggleMenu()">
+        <span class="menu-icon">☰</span>
+      </button>
+    </div>
+  </div>
+</nav>
