@@ -1,29 +1,33 @@
-<nav class="topbar">
-  <div class="topbar-container">
+<nav class="topbar bg-white shadow-md">
+  <div class="container d-flex justify-between align-center py-3">
     <div class="logo">
-      <a [routerLink]="['/']">
-        <span class="logo-icon">🍳</span>
-        <span class="logo-text">CookBook</span>
+      <a [routerLink]="['/']" class="d-flex align-center">
+        <span class="logo-icon mr-2"></span>
+        <span class="logo-text font-bold text-xl text-primary">CookBook</span>
       </a>
     </div>
+    <div class="nav-links d-flex align-center">
+      <a [routerLink]="['/']" routerLinkActive="text-primary font-semibold" [routerLinkActiveOptions]="{exact: true}"
+         class="nav-link mx-2 text-dark">About</a>
+      <a [routerLink]="['/recipes']" routerLinkActive="text-primary font-semibold" class="nav-link mx-2 text-dark">Recipes</a>
+      <a [routerLink]="['/pantry']" routerLinkActive="text-primary font-semibold" class="nav-link mx-2 text-dark">Ingredients</a>
+      <!-- <a [routerLink]="['/meal-planner']" routerLinkActive="text-primary font-semibold" class="nav-link mx-2 text-dark">Meal Planner</a> -->
 
-    <div class="nav-links" [class.active]="isMenuOpen">
-      <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home</a>
-      <a [routerLink]="['/cookbook']" routerLinkActive="active" class="nav-link">Recipes</a>
-      <a [routerLink]="['/pantry']" routerLinkActive="active" class="nav-link">Pantry</a>
-      <a [routerLink]="['/meal-planner']" routerLinkActive="active" class="nav-link">Meal Planner</a>
-    </div>
+      </div>
+    <!--
+          <div class="right-section d-flex align-center">
+            <button class="btn btn-outline-primary btn-sm mx-1">
+              <span class="search-icon"></span>
+            </button>
+            <button class="btn btn-outline-secondary btn-sm mx-1">
+              <span class="user-icon"></span>
+            </button>
+            <button class="btn btn-outline-primary btn-sm mx-1" (click)="toggleMenu()">
+              <span class="menu-icon">☰</span>
+            </button>
+          </div>
 
-    <div class="right-section">
-      <button class="search-button">
-        <span class="search-icon">🔍</span>
-      </button>
-      <button class="user-button">
-        <span class="user-icon">👤</span>
-      </button>
-      <button class="menu-toggle" (click)="toggleMenu()">
-        <span class="menu-icon">☰</span>
-      </button>
-    </div>
+      </div>
+          -->
   </div>
 </nav>

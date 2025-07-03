@@ -1,5 +1,159 @@
-<form>
+<form [formGroup]="recipeForm" (ngSubmit)="submitRecipe()">
+  <h1>Create New Recipe</h1>
+
+  <!-- Basic Recipe Information -->
+  <section class="basic-info">
+    <h2>Recipe Details</h2>
+
+    <div class="form-group">
+      <label for="recipeName">Recipe Name</label>
+      <input type="text" id="recipeName" formControlName="name" class="form-control" placeholder="Enter recipe name"/>
+    </div>
+
+    <div class="form-group">
+      <label for="recipeDescription">Description</label>
+      <textarea id="recipeDescription" formControlName="description" class="form-control"
+                placeholder="Describe your recipe..."></textarea>
+    </div>
+
+    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+      <div class="form-group">
+        <label for="recipeServings">Number of Servings</label>
+        <input type="number" id="recipeServings" formControlName="servings" class="form-control" min="1"
+               placeholder="4"/>
+      </div>
+
+      <div class="form-group">
+        <label for="recipeCategory">Category</label>
+        <select id="recipeCategory" formControlName="category" class="form-control" placeholder="select a category">
+          <option value="" disabled selected>Select your option</option>
+          <option value="breakfast">Breakfast</option>
+          <option value="meal">Main Meal</option>
+          <option value="dessert">Dessert</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ingredients Section -->
+  <h2>
+    <span>Ingredients</span>
+    <small class="text-light">({{ ingredients.length }} item{{ ingredients.length !== 1 ? 's' : '' }})</small>
+  </h2>
+  <section formArrayName="ingredients" class="ingredients-list">
 
 
+    <div class="ingredients-grid">
+      <div *ngFor="let ingredientCtrl of ingredients.controls; let i = index" [formGroupName]="i" class="ingredient-card">
 
+        <div class="ingredient-header">
+          <div class="ingredient-number">{{ i + 1 }}</div>
+          <button type="button" class="btn-remove" (click)="ingredients.removeAt(i)" *ngIf="ingredients.length > 1" title="Remove ingredient">×</button>
+        </div>
+
+        <div class="ingredient-form-row">
+          <div class="form-field">
+            <label for="ingredientName{{i}}">Ingredient Name</label>
+            <input type="text" id="ingredientName{{i}}" formControlName="name" class="form-control" placeholder="e.g. : Flour"/>
+          </div>
+
+          <div class="form-field">
+            <label for="quantity{{i}}">Quantity</label>
+            <input type="number" id="quantity{{i}}" formControlName="quantity"  class="form-control"  min="0.1" step="0.1" placeholder="1"/>
+          </div>
+
+          <div class="form-field">
+            <label for="unit{{i}}">Unit</label>
+            <select id="unit{{i}}" formControlName="unit" class="form-control">
+              <option value="">No unit</option>
+              <option value="gram">g</option>
+              <option value="kg">kg</option>
+              <option value="ml">mL</option>
+              <option value="l">L</option>
+              <option value="cup">cup</option>
+              <option value="tbsp">tbsp</option>
+              <option value="tsp">tsp</option>
+              <option value="piece">piece</option>
+              <option value="pinch">pinch</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn-add" (click)="addIngredient()">
+      Add Ingredient
+    </button>
+  </section>
+
+  <!-- Steps Section -->
+  <h2>
+    <span>Cooking Steps</span>
+    <small class="text-light">({{ steps.length }} step{{ steps.length !== 1 ? 's' : '' }})</small>
+  </h2>
+  <section formArrayName="steps" class="step-list">
+
+
+    <div *ngFor="let stepCtrl of steps.controls; let i = index"
+         [formGroupName]="i"
+         class="step-group">
+
+      <h3>Step {{ i + 1 }}</h3>
+
+      <button type="button" class="btn-remove" (click)="steps.removeAt(i)" *ngIf="steps.length > 1" title="Remove step">×</button>
+
+      <div class="form-group">
+        <label for="stepDescription{{i}}">Instructions</label>
+        <textarea id="stepDescription{{i}}"
+                  formControlName="description"
+                  class="form-control"
+                  placeholder="Describe what to do in this step..."
+                  rows="3"></textarea>
+      </div>
+
+      <div class="step-times">
+        <div class="form-field">
+          <label for="stepPreparingTime{{i}}">Prep Time (minutes)</label>
+          <input id="stepPreparingTime{{i}}"
+                 type="number"
+                 formControlName="preparingTime"
+                 class="form-control"
+                 min="0"
+                 placeholder="5">
+        </div>
+
+        <div class="form-field">
+          <label for="stepCookingTime{{i}}">Cook Time (minutes)</label>
+          <input id="stepCookingTime{{i}}"
+                 type="number"
+                 formControlName="cookingTime"
+                 class="form-control"
+                 min="0"
+                 placeholder="10">
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn-add" (click)="addStep()">
+      Add Step
+    </button>
+  </section>
+  <button type="button" (click)="status()">status</button>
+
+  <!-- Submit Section -->
+  <section class="submit-section">
+    <section>
+    <button type="submit" [disabled]="isSubmitting()">
+      {{ isSubmitting() ? 'Saving Recipe...' : 'Save Recipe' }}
+    </button>
+    <button type="button" class="btn-sm" [routerLink]="['/recipes']">Cancel</button>
+      </section>
+    <div *ngIf="submitError()" class="error" >
+      {{ submitError() }}
+    </div>
+    <div *ngIf="approvedRecipe()" class="success">
+      Recipe saved successfully!
+    </div>
+  </section>
 </form>

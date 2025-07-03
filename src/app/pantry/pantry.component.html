@@ -1,11 +1,10 @@
 <div class="container fade-in">
-  <h2 class="text-center mb-2">My Pantry</h2>
-
+  <h2 class="text-center mb-4">Ingredients</h2>
   <div class="card">
-    <ul class="ingredient-list">
-      <li *ngFor="let ingredient of ingredients" class="ingredient-item">
-        <span>{{ ingredient.name }}</span>
-        <span *ngIf="ingredient.category"> - {{ ingredient.category }} {{ ingredient.unit.toLowerCase() }}</span>
+    <ul class="ingredients-grid">
+      <li *ngFor="let ingredient of ingredients" class="ingredient-card mb-3 d-flex justify-between align-center">
+        <span class="font-semibold">{{ ingredient.name }}</span>
+        <span *ngIf="ingredient.category" class="text-light"> {{ ingredient.unit.toLowerCase() }}</span>
       </li>
     </ul>
   </div>

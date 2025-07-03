@@ -3,6 +3,7 @@ import {RecipeService} from '../recipe.service'
 import {NgForOf, NgIf} from '@angular/common';
 import {Recipe} from '../recipe'
 import {RecipeCardComponent} from '../recipe-card/recipe-card.component';
+import {RouterLink} from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,8 @@ import {RecipeCardComponent} from '../recipe-card/recipe-card.component';
   imports: [
     NgForOf,
     NgIf,
-    RecipeCardComponent
+    RecipeCardComponent,
+    RouterLink
   ],
   templateUrl: './recipe-book.component.html',
   styleUrl: './recipe-book.component.css'
@@ -24,9 +26,9 @@ export class RecipeBookComponent {
   folded: boolean = false
 
   constructor() {
-    //this.baseApiService.getAllRecipes().then(recipes => {
-      //this.recipes = recipes;
-    //})
+    this.baseApiService.getAllRecipes().then(recipes => {
+      this.recipes = recipes;
+    })
   }
 
   testRecipe: Recipe = {
@@ -35,7 +37,7 @@ export class RecipeBookComponent {
     category: 'cheese',
     description: 'miam miam',
     ingredientsQuantities: [],
-    numberOfEater: 4,
+    numberOfServings: 4,
     preparationSteps: [],
   }
 
@@ -43,5 +45,7 @@ export class RecipeBookComponent {
     this.recipes.push(recipe);
     console.log(this.recipes);
   }
-
 }
+
+
+

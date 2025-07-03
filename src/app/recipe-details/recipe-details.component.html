@@ -1,0 +1,25 @@
+<article class="container p-5 fade-in">
+  <h1 class="mb-2">{{ recipe?.name }}</h1>
+  <h3 class="mb-4 text-light">{{ recipe?.description }}</h3>
+  <section class="ingredients-list my-4">
+    <h2>Ingrédients</h2>
+    <ol class="ingredients-grid">
+      <li *ngFor="let ingredient of recipe?.ingredientsQuantities" class="ingredient-card mb-3">
+        <div class="ingredient-header">
+          <span class="font-semibold">{{ ingredient.name }}</span>
+          <span class="text-light">
+            {{ ingredient.quantity }} {{ ingredient.unit.toLowerCase() }}
+          </span>
+        </div>
+      </li>
+    </ol>
+  </section>
+  <section class="step-list my-4">
+    <h2>Étapes</h2>
+    <ol>
+      <li *ngFor="let step of recipe?.preparationSteps" class="step-group mb-2">
+        {{ step.description }}
+      </li>
+    </ol>
+  </section>
+</article>

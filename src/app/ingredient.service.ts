@@ -7,7 +7,7 @@ import {Ingredient} from './ingredient';
 
 export class IngredientService {
 
-  url = 'http://spring-backend'
+  url = 'http://localhost:8080'
 
   async getAllIngredients(): Promise<Ingredient[]> {
     const data = await fetch(`${this.url}/ingredients`)

@@ -1,18 +1,19 @@
 <div class="container fade-in">
-  <h2 class="text-center mb-2">My cookbook</h2>
-
-    <section class="results">
-      <h2 *ngIf="recipes.length==0; else results">No recipes corresponding</h2>
-      <ng-template #results>
+  <h2 class="text-center mb-4">
+    <span>My cookbook</span>
+  </h2>
+  <section class="results">
+    <h2 *ngIf="recipes.length==0; else results" class="text-center text-light">No recipes found</h2>
+    <ng-template #results>
+      <div class="grid grid-2 gap-4">
         <app-recipe-card
           *ngFor="let recipe of recipes"
           [recipeInput]="recipe">
         </app-recipe-card>
-      </ng-template>
-    </section>
-
-  <section>
-    <button class="btn" (click)="addRecipe(testRecipe)">add recipe</button>
+      </div>
+    </ng-template>
+    <div class="add-recipe-container mt-5 text-center">
+        <button class="btn btn-primary btn-sm ml-3" [routerLink]="['/recipes/newrecipe']">Add a new recipe +</button>
+    </div>
   </section>
 </div>
-

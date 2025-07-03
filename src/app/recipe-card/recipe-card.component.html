@@ -1,4 +1,4 @@
-<section class="listing">
-    <h3 class="listing-heading">>{{recipeInput.name}}</h3>
-    <p class="listing-category">{{recipeInput.category}}</p>
+<section class="card listing p-4 d-flex flex-column align-start hover:shadow-lg" [routerLink]="['/details', recipeInput.id]">
+  <h3 class="listing-heading font-semibold mb-2">{{ recipeInput.name }}</h3>
+  <p class="listing-category text-light">{{ recipeInput.category }}</p>
 </section>
